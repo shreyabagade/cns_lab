@@ -1,0 +1,25 @@
+//to save network traffic in pcap file
+tcpdump -w /Desktop/traffic.pcap -i eth0 -v 'tcp and net 192.168.1.0/24'
+
+
+//wireshark=>
+capture>interface>wireless network connection>start
+wireshark filter - ip.addr==66.163.36.209
+
+for port - tcp.port==441
+
+//pdf
+
+# tcpdump -n tcp
+#tcpdump -n icmp
+# tcpdump -n src 172.16.92.1
+# tcpdump -n dst 172.16.92.1
+# tcpdump -n port 80
+# tcpdump port 80
+# tcpdump udp and src port 53
+observing packets within a specific port range
+# tcpdump -n portrange 1-80
+tcpdump -n src port 443
+tcpdump -nnvvS src 10.5.2.3 and dst port 3389
+tcpdump -nvX src net 192.168.0.0/16 and dst net 10.0.0.0/8 or
+172.16.0.0/16

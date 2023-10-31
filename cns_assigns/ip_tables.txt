@@ -1,0 +1,44 @@
+TCP traffic on that port to come in.
+sudo iptables -A INPUT -p tcp --dport ssh -j ACCEPT
+
+let's allow all incoming web traffic
+sudo iptables -A INPUT -p tcp --dport 80 -j ACCEPT
+
+Blocking Traffic
+sudo iptables -A INPUT -j DROP
+sudo iptables -L
+
+Editing iptables
+sudo iptables -I INPUT 1 -i lo -j ACCEPT
+sudo iptables -L
+
+we will list iptables in greater detail.
+sudo iptables -L -v
+
+//Allow traffic on ICMP port
+sudo iptables -A INPUT -p icmp -j ACCEPT
+now list the rules again..
+sudo iptables -L
+
+//Dropping icmp packets
+try to ping ur neighbour machine
+ping 192.168.92.17
+u can see the response packets received.
+Now block incoming icmp packets from the neighbour using command:
+sudo iptables -A INPUT -p icmp -j DROP
+list the rule:
+sudo iptables -L
+try to ping ur neighbour machine again
+ping 192.168.92.17
+u can not see receive icmp echo reply packets
+
+//restrict outgoing icmp
+sudo iptables -A OUTPUT -p icmp -j DROP
+List the rule:
+sudo iptables -L
+now try to ping neighbour
+ping 192.168.92.17
+
+flush all rules and try to ping neighbor
+Blocking TCP port traffic will not allow u to browse the Internet
+sudo iptables -A INPUT -p tcp -j DROP

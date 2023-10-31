@@ -1,0 +1,30 @@
+TCP Connect scan:
+# nmap -sT ipadress
+
+TCP SYN scan:
+#nmap -sS ipadress
+
+FIN Scan:
+#nmap -sF ipaddress
+
+Null Scan:
+#nmap -sN target
+
+XMAS Scan:
+#nmap -sX target
+
+ACK Scan:
+#nmap -sA target
+
+Ping Sweep:
+# nmap -sP IP address of gateway
+
+Service and version detection:
+#nmap -sV target
+
+Port and Port range scanning:
+#nmap -p23 ipaddress scans specific port
+#nmap -p23-443 ipaddress scans ports ranging from 23 to 443
+
+OS fingerprinting:
+#nmap -O ipaddress

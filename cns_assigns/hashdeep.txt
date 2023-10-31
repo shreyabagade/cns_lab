@@ -1,0 +1,27 @@
+hashdeep -h //help opt
+
+hashdeep try1.txt //generate hash
+
+// to save hash value=>
+hashdeep try1.txt > hash.txt
+
+//audit with hash file
+hashdeep -a try1.txt -k hash.txt //audit passed
+
+//audit with diff txt file
+hashdeep -a try2.txt -k hash.txt //audit failed
+
+//using specified hash like md5
+hashdeep -c md5 filename.txt > hash_stored.txt
+
+//To audit, first create a hashset file and then audit it against the files
+to be checked if they are modified.
+hashdeep -c md5,sha1,sha256 -r /home/shachi/myfiles>hashset1.txt
+hashdeep -a -r -k hashset1.txt /home/shachi/myfiles
+
+For verbose output of audit
+hashdeep -vv -a -r -k hashset1.txt /home/shachi/myfiles
+hashdeep -vvv -a -r -k hashset1.txt /home/shachi/myfiles
+
+
+
